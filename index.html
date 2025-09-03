@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Digital Boost • Futuristic Web & SEO</title>
+    <meta name="description" content="Digital Boost builds lightning-fast futuristic websites and drives growth with sharp SEO. Explore services, work, team, and partners." />
+
+    <!-- Favicon (inline SVG). Заменишь href на свой favicon.svg при желании -->
+    <link rel="icon" type="image/svg+xml"
+          href='data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="g" cx="50%" cy="40%" r="60%"><stop stop-color="%2324c3ff" offset="0"/><stop stop-color="%237c4dff" offset="1"/></radialGradient></defs><circle cx="32" cy="32" r="28" fill="url(%23g)"/><path d="M12 34c8 6 27 6 40 0" stroke="%23fff" stroke-opacity=".7" stroke-width="2" fill="none"/><path d="M12 30c8-6 27-6 40 0" stroke="%23fff" stroke-opacity=".35" stroke-width="2" fill="none"/></svg>'/>
+
+    <!-- Social -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Digital Boost • Futuristic Web & SEO" />
+    <meta property="og:description" content="Web development, SEO, and digital branding with a futuristic edge." />
+    <meta property="og:image" content="og-image.jpg" />
+    <meta property="og:url" content="https://digitalboost.help/" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<!-- background layers -->
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="grid-overlay" aria-hidden="true"></div>
+<div class="beams" aria-hidden="true"></div>
+
+<!-- Header -->
+<header class="hdr">
+    <div class="container hdr__row">
+        <a class="brand" href="#" aria-label="Digital Boost">
+            <span class="brand__logo">◉</span>
+            <span class="brand__word">DIGITAL<span>BOOST</span></span>
+        </a>
+
+        <nav class="nav">
+            <a href="#services" data-i18n="nav_services">SERVICES</a>
+            <a href="#work" data-i18n="nav_work">WORK</a>
+            <a href="#team" data-i18n="nav_team">TEAM</a>
+            <a href="#partners" data-i18n="nav_partners">PARTNERS</a>
+            <a href="#contact" data-i18n="nav_contact">CONTACT</a>
+        </nav>
+
+        <div class="hdr__tools">
+            <div class="lang">
+                <button class="lbtn" data-lang="en">EN</button>
+                <button class="lbtn" data-lang="ru">RU</button>
+                <button class="lbtn" data-lang="he">HE</button>
+            </div>
+            <a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/972547999309">WhatsApp</a>
+            <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+    <div class="navm" id="navm" hidden>
+        <a href="#services" data-i18n="nav_services">SERVICES</a>
+        <a href="#work" data-i18n="nav_work">WORK</a>
+        <a href="#team" data-i18n="nav_team">TEAM</a>
+        <a href="#contact" data-i18n="nav_contact">CONTACT</a>
+    </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+    <div class="hero__vignette" aria-hidden="true"></div>
+    <div class="container hero__wrap">
+        <div class="hero__copy">
+            <h1 class="glow" data-i18n="hero_title">Your Partner in Digital Growth</h1>
+            <p class="lead" data-i18n="hero_sub">Expert Website Development & SEO Optimization</p>
+            <div class="cta">
+                <a href="#contact" class="btn primary" data-i18n="cta_audit">Get a Free Audit</a>
+                <a href="#work" class="btn wire" data-i18n="cta_work">See Our Work</a>
+            </div>
+            <ul class="chips">
+                <li data-i18n="hero_badge_1">Fast load</li>
+                <li data-i18n="hero_badge_2">SEO ready</li>
+                <li data-i18n="hero_badge_3">Mobile first</li>
+            </ul>
+        </div>
+
+        <!-- Futuristic Gyroscope visual -->
+        <div class="gyro" aria-hidden="true">
+            <span class="ring r1"></span>
+            <span class="ring r2"></span>
+            <span class="ring r3"></span>
+            <span class="core"></span>
+        </div>
+    </div>
+
+    <!-- Perfectly looping ticker -->
+    <div class="ticker" id="ticker">
+        <div class="ticker__inner" id="tickerInner" aria-hidden="true"></div>
+    </div>
+</section>
+
+<!-- Services -->
+<section id="services" class="section">
+    <div class="container">
+        <h2 class="title" data-i18n="services_title">OUR SERVICES</h2>
+        <div class="tiles">
+            <article class="tile">
+                <header><span>01</span><h3 data-i18n="s1_title">SEO Optimization</h3></header>
+                <p data-i18n="s1_text">Boost your visibility on search engines through technical improvements, keyword strategy, and quality link building.</p>
+                <ul>
+                    <li data-i18n="s1_li1">Core Web Vitals and speed</li>
+                    <li data-i18n="s1_li2">On-page structure and content</li>
+                    <li data-i18n="s1_li3">Backlinks with quality control</li>
+                </ul>
+            </article>
+
+            <article class="tile">
+                <header><span>02</span><h3 data-i18n="s2_title">Web Development</h3></header>
+                <p data-i18n="s2_text">Modern, responsive, high-performing websites tailored to your goals.</p>
+                <ul>
+                    <li data-i18n="s2_li1">Clean code & reliable stack</li>
+                    <li data-i18n="s2_li2">CMS or static by need</li>
+                    <li data-i18n="s2_li3">Accessibility built in</li>
+                </ul>
+            </article>
+
+            <article class="tile">
+                <header><span>03</span><h3 data-i18n="s3_title">Digital Branding</h3></header>
+                <p data-i18n="s3_text">Clear identity, intuitive UX, sleek UI that convert.</p>
+                <ul>
+                    <li data-i18n="s3_li1">Brand voice & visuals</li>
+                    <li data-i18n="s3_li2">Design system & UI kit</li>
+                    <li data-i18n="s3_li3">Landing pages that sell</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- WORK: Infinite slider -->
+<section id="work" class="section alt">
+    <div class="container">
+        <h2 class="title" data-i18n="work_title">OUR WORK – YOUR SUCCESS</h2>
+
+        <div class="slider" id="workSlider" aria-label="Portfolio">
+            <button class="sbtn prev" aria-label="Previous">‹</button>
+            <div class="viewport">
+                <div class="track">
+                    <!-- 6 base slides -->
+                    <article class="slide">
+                        <div class="frame"><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200" alt=""></div>
+                        <h4 data-i18n="w1_t">Logistics landing and store</h4>
+                        <p data-i18n="w1_p">Faster load, higher conversions, better mobile UX.</p>
+                    </article>
+                    <article class="slide">
+                        <div class="frame"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200" alt=""></div>
+                        <h4 data-i18n="w2_t">Contractor services catalog</h4>
+                        <p data-i18n="w2_p">Clear navigation and SEO growth in a crowded niche.</p>
+                    </article>
+                    <article class="slide">
+                        <div class="frame"><img src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=1200" alt=""></div>
+                        <h4 data-i18n="w3_t">Medical site and booking</h4>
+                        <p data-i18n="w3_p">Brand refresh, content structure, and appointment flow.</p>
+                    </article>
+                    <article class="slide">
+                        <div class="frame"><img src="https://images.unsplash.com/photo-1520975682031-a6b6d8a5d39a?q=80&w=1200" alt=""></div>
+                        <h4>Fintech dashboard</h4>
+                        <p>Real-time charts, security hardening, +38% activation.</p>
+                    </article>
+                    <article class="slide">
+                        <div class="frame"><img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200" alt=""></div>
+                        <h4>E-commerce storefront</h4>
+                        <p>Sub-second LCP, improved PDP UX, +22% CVR.</p>
+                    </article>
+                    <article class="slide">
+                        <div class="frame"><img src="https://images.unsplash.com/photo-1542744173-05336fcc7ad4?q=80&w=1200" alt=""></div>
+                        <h4>SaaS marketing site</h4>
+                        <p>New brand voice, SEO pillar pages, +130% organic.</p>
+                    </article>
+                </div>
+            </div>
+            <button class="sbtn next" aria-label="Next">›</button>
+        </div>
+        <div class="sdots" id="sdots" aria-hidden="true"></div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<section id="team" class="section">
+    <div class="container">
+        <h2 class="title" data-i18n="team_title">OUR TEAM</h2>
+        <div class="team">
+            <article class="card">
+                <img src="img/matan.jpg" alt="Matan portrait" loading="lazy">
+                <div class="meta"><h3>Matan</h3><p>CEO</p></div>
+            </article>
+            <article class="card">
+                <img src="img/vladimir.jpg" alt="Vladimir portrait" loading="lazy">
+                <div class="meta"><h3>Vladimir</h3><p>CIO / CISO</p></div>
+            </article>
+            <article class="card">
+                <img src="img/michael.jpg" alt="Michael portrait" loading="lazy">
+                <div class="meta"><h3>Michael</h3><p>CTO</p></div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- PARTNERS -->
+<section id="partners" class="section partners">
+    <div class="container">
+        <h2 class="title" data-i18n="partners_title">PARTNERS</h2>
+        <ul class="logos">
+            <li><img alt="Partner 1" src="https://dummyimage.com/220x80/ffffff/000000&text=ALPHA" loading="lazy"></li>
+            <li><img alt="Partner 2" src="https://dummyimage.com/220x80/ffffff/000000&text=BETA" loading="lazy"></li>
+            <li><img alt="Partner 3" src="https://dummyimage.com/220x80/ffffff/000000&text=GAMMA" loading="lazy"></li>
+            <li><img alt="Partner 4" src="https://dummyimage.com/220x80/ffffff/000000&text=DELTA" loading="lazy"></li>
+            <li><img alt="Partner 5" src="https://dummyimage.com/220x80/ffffff/000000&text=OMEGA" loading="lazy"></li>
+        </ul>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section alt">
+    <div class="container contact">
+        <div class="panel">
+            <h2 class="title"><span data-i18n="contact_title_1">Ready to</span> <em data-i18n="contact_title_2">level up</em>?</h2>
+            <p class="lead" data-i18n="contact_sub">Leave your info and we’ll contact you soon.</p>
+            <ul class="channels">
+                <li><a target="_blank" rel="noopener" href="https://wa.me/972547999309">WhatsApp</a></li>
+                <li><a target="_blank" rel="noopener" href="https://t.me/">Telegram</a></li>
+                <li><a href="mailto:hello@digitalboost.help">hello@digitalboost.help</a></li>
+                <li><a target="_blank" rel="noopener" href="https://calendly.com/">Book a 15 min call</a></li>
+            </ul>
+        </div>
+
+        <form id="form" class="form" novalidate>
+            <label><span data-i18n="f_name">Full name</span><input name="name" required data-i18n-placeholder="ph_name" placeholder="Full name"></label>
+            <label><span data-i18n="f_phone">Phone</span><input name="phone" type="tel" required data-i18n-placeholder="ph_phone" placeholder="+972"></label>
+            <label><span data-i18n="f_email">Email</span><input name="email" type="email" required data-i18n-placeholder="ph_email" placeholder="you@example.com"></label>
+            <label class="full"><span data-i18n="f_msg">Message</span><textarea name="message" rows="4" data-i18n-placeholder="ph_msg" placeholder="Tell us about your project"></textarea></label>
+            <button class="btn primary full" data-i18n="f_send" type="submit">Send</button>
+            <p class="note" data-i18n="f_note">By sending you agree to our privacy policy.</p>
+            <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        </form>
+    </div>
+</section>
+
+<footer class="ftr">
+    <div class="container ftr__row">
+        <p>© <span id="year"></span> Digital Boost</p>
+        <p><a href="#" data-i18n="privacy">Privacy Policy</a> · <a href="#" data-i18n="terms">Terms</a></p>
+    </div>
+</footer>
+
+<a class="fab" target="_blank" rel="noopener" href="https://wa.me/972547999309" aria-label="WhatsApp">✦</a>
+
+<script src="main.js"></script>
+</body>
+</html>
