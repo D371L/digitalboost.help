@@ -242,10 +242,11 @@ body{
 .card{position:relative; border:1px solid #2a3360; border-radius:16px; overflow:hidden; background:rgba(12,17,36,.7)}
 .card img{width:100%; aspect-ratio:1/1; height:auto; object-fit:cover; display:block; filter:saturate(.92) contrast(1.05)}
 .card .meta{padding:10px}
-.card .meta h4{margin:0 0 4px; font-size:14px; line-height:1.1}
+/* FIX: у тебя в HTML <h3>, в CSS было h4 — из-за этого стиль не применялся */
+.card .meta h3{margin:0 0 4px; font-size:14px; line-height:1.1}
 .card .meta p{margin:0; color:#9fb2d9; font-size:12px}
 @media (min-width:700px){
-    .card .meta h4{font-size:15px}
+    .card .meta h3{font-size:15px}
     .card .meta p{font-size:13px}
 }
 
@@ -284,7 +285,7 @@ body{
 /* RTL tweaks */
 html[dir="rtl"] .contact{direction:rtl}
 html[dir="rtl"] .tile ul, html[dir="rtl"] .slide p{padding-right:18px; padding-left:0}
-html[dir="rtl"] .sdots{direction:ltr}      /* чтобы точки считались слева-направо */
+html[dir="rtl"] .sdots{direction:ltr}
 html[dir="rtl"] .sbtn.prev{right:6px; left:auto}
 html[dir="rtl"] .sbtn.next{left:6px; right:auto}
 
@@ -296,10 +297,8 @@ html[dir="rtl"] .sbtn.next{left:6px; right:auto}
     .section{padding:60px 0}
     .glow{font-size:clamp(28px,8vw,42px)}
     .lead{font-size:15px}
-    /* HERO: кнопки колонкой на всю ширину */
     .cta{flex-direction:column}
     .cta .btn{width:100%; justify-content:center; padding:12px 16px}
-    /* WORK: чуть уже карточки на телефоне */
     .slide{flex-basis:86%; max-width:86%}
     .sbtn{width:42px; height:42px}
 }
@@ -313,3 +312,28 @@ html[dir="rtl"] .sbtn.next{left:6px; right:auto}
     *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
     .beams{background:none}
 }
+
+/* --- Header overflow fixes on very small screens --- */
+.hdr__row { min-height: 64px; }
+.hdr__tools { gap: 8px; flex: 0 0 auto; }
+.brand { min-width: 0; }          /* позволяет ряду ужиматься без выдавливания */
+.lang { flex-shrink: 0; }
+.hdr__tools .btn.ghost { white-space: nowrap; }
+
+/* На очень узких экранах прячем длинную кнопку WhatsApp,
+   чтобы она не вылезала за край */
+@media (max-width: 420px){
+    .hdr__tools .btn.ghost { display: none; }
+    .lang .lbtn { padding: 6px 10px; } /* чуть ужмём языки, чтобы всё влезало */
+}
+
+/* --- FAB safe-area (нижняя круглая кнопка) --- */
+.fab{
+    right: calc(18px + env(safe-area-inset-right));
+    bottom: calc(18px + env(safe-area-inset-bottom));
+}
+
+/* для iOS/Android с вырезами/жестовой навигацией дополнительно
+   можно подстраховать левый/верхний отступ, если когда-нибудь понадобится:
+.fab{ left:auto; right:calc(18px + env(safe-area-inset-right));
+      top:auto; bottom:calc(18px + env(safe-area-inset-bottom)); } */

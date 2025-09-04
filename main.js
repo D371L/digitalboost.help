@@ -134,6 +134,9 @@ function buildTicker(){
     const inner = $('#tickerInner');
     if(!inner) return;
 
+    // FIX: чтобы под RTL не инвертировалось направление бегущей строки
+    inner.setAttribute('dir','ltr');
+
     const unit = phrases.map(p=>`<span>${p}</span>`).join('');
     inner.innerHTML = unit;
 
@@ -153,8 +156,7 @@ function slider(root){
     const next = root.querySelector('.sbtn.next');
     const dotsWrap = $('#sdots');
 
-    // Нормализуем сам скролл: контейнер всегда LTR (чтобы RTL не ломал направления),
-    // тексты внутри карточек остаются в нужном dir всего документа.
+    // контейнер LTR, чтобы RTL не ломал направления скролла
     viewport.setAttribute('dir', 'ltr');
     track.setAttribute('dir', 'ltr');
 
@@ -172,7 +174,6 @@ function slider(root){
         const w = viewport.clientWidth;
         perView = w >= 1200 ? 3 : w >= 900 ? 2 : 1;
 
-        // точки
         if(dotsWrap){
             const pages = Math.max(1, Math.ceil(track.children.length / perView));
             dotsWrap.innerHTML = '';
@@ -218,6 +219,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const expanded = !navm.hasAttribute('hidden');
             burger.setAttribute('aria-expanded', String(expanded));
             navm.setAttribute('aria-hidden', String(!expanded));
+            // FIX: блокируем фон при открытом меню
+            document.body.style.overflow = expanded ? 'hidden' : '';
         });
     }
 
