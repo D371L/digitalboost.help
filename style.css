@@ -11,11 +11,7 @@
     --shadowM:0 22px 70px rgba(0,0,0,.65);
     --max:1200px;
     --radius:18px;
-
-    /* ticker speed */
     --tickerDur:28s;
-
-    /* focus color */
     --focus:#89d3ff;
 }
 
@@ -90,7 +86,7 @@ body{
 .brand__word span{color:var(--neon)}
 
 .nav{display:none; gap:22px}
-.nav a{color:#d7e2ff; text-decoration:none; font-weight:700; letter-spacing:.06em}
+.nav a{color:#d7e2ff; text-decoration:none; font-weight:700; letter-spacing:.06em; padding:8px 6px}
 .nav a:hover{color:#fff}
 
 .hdr__tools{display:flex; align-items:center; gap:10px}
@@ -156,10 +152,7 @@ body{
 
 /* Gyroscope */
 .gyro{position:relative; min-height:360px}
-.ring{
-    position:absolute; inset:0; margin:auto; width:400px; height:400px; border-radius:50%;
-    border:1px solid #2a3360; filter:blur(.2px); box-shadow:inset 0 0 90px rgba(0,0,0,.6);
-}
+.ring{position:absolute; inset:0; margin:auto; width:400px; height:400px; border-radius:50%; border:1px solid #2a3360; filter:blur(.2px); box-shadow:inset 0 0 90px rgba(0,0,0,.6)}
 .r1{animation:spin1 20s linear infinite; background:conic-gradient(from 0deg, rgba(124,77,255,.2), transparent 40%, rgba(36,195,255,.2))}
 .r2{width:360px;height:360px; animation:spin2 16s linear infinite; transform:rotateX(60deg) rotateZ(10deg); background:conic-gradient(from 180deg, rgba(36,195,255,.2), transparent 50%, rgba(42,245,193,.18))}
 .r3{width:300px;height:300px; animation:spin3 12s linear infinite; transform:rotateX(75deg) rotateZ(-20deg); background:conic-gradient(from 60deg, rgba(42,245,193,.2), transparent 50%, rgba(124,77,255,.18))}
@@ -212,81 +205,71 @@ body{
 .tile p{color:var(--muted)}
 .tile ul{margin:12px 0 0; padding-left:18px; color:#d7e8ff}
 
-/* Slider (WORK) */
-.slider{position:relative}
-.viewport{overflow:hidden}
-.track{display:flex; gap:14px; will-change:transform}
+/* WORK — scroll-snap карусель с квадратными превью */
+.slider{position:relative; overflow:hidden}
+.viewport{
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding-inline:10px;
+    scrollbar-width:none;
+}
+.viewport::-webkit-scrollbar{display:none}
+.track{display:flex; gap:14px}
 .slide{
     flex:0 0 100%; max-width:100%;
-    background:rgba(12,17,36,.6); border:1px solid #2a3360; border-radius:16px; overflow:hidden; box-shadow:var(--shadowS)
+    scroll-snap-align:center;
+    background:rgba(12,17,36,.6);
+    border:1px solid #2a3360; border-radius:16px; overflow:hidden; box-shadow:var(--shadowS)
 }
 @media(min-width:900px){ .slide{flex-basis:40%; max-width:40%} }
 @media(min-width:1200px){ .slide{flex-basis:40%; max-width:40%} }
-.frame{aspect-ratio:16/10; background:#0c1124}
-.frame img{width:100%; height:145%; object-fit:cover; display:block; filter:saturate(1.1) contrast(1.05)}
+.frame{aspect-ratio:1 / 1; background:#0c1124}
+.frame img{width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.08) contrast(1.05)}
 .sbtn{
     position:absolute; top:50%; transform:translateY(-50%);
-    width:42px; height:42px; border-radius:50%; border:1px solid #2a3360;
+    width:48px; height:48px; border-radius:50%; border:1px solid #2a3360;
     background:rgba(8,12,28,.92); color:#fff; cursor:pointer; box-shadow:var(--shadowS); z-index:2
 }
-.sbtn.prev{left:-6px}
-.sbtn.next{right:-6px}
-.sdots{display:flex; gap:6px; justify-content:center; margin-top:10px}
-.sdots button{
-    width:8px; height:8px; border-radius:50%; border:0; background:#2a3360; opacity:.7;
-}
+.sbtn.prev{left:6px}
+.sbtn.next{right:6px}
+.sdots{display:flex; gap:8px; justify-content:center; margin-top:12px}
+.sdots button{width:9px; height:9px; border-radius:50%; border:0; background:#2a3360; opacity:.7}
 .sdots button.active{background:#8ad6ff; opacity:1}
 
-/* Team */
-.team{display:grid; grid-template-columns:1fr; gap:14px}
-@media(min-width:900px){ .team{grid-template-columns:repeat(3,1fr)} }
+/* Team — 3 в ряд, квадратные фото */
+.team{display:grid; gap:12px; grid-template-columns:repeat(3, 1fr)}
 .card{position:relative; border:1px solid #2a3360; border-radius:16px; overflow:hidden; background:rgba(12,17,36,.7)}
-.card img{width:100%; height:390px; object-fit:cover; display:block; filter:saturate(.92) contrast(1.05)}
-.card .meta{padding:12px}
-.card .meta p{margin:2px 0 0; color:#9fb2d9}
+.card img{width:100%; aspect-ratio:1/1; height:auto; object-fit:cover; display:block; filter:saturate(.92) contrast(1.05)}
+.card .meta{padding:10px}
+.card .meta h4{margin:0 0 4px; font-size:14px; line-height:1.1}
+.card .meta p{margin:0; color:#9fb2d9; font-size:12px}
+@media (min-width:700px){
+    .card .meta h4{font-size:15px}
+    .card .meta p{font-size:13px}
+}
 
 /* PARTNERS */
 .partners{border-top:1px solid var(--line); border-bottom:1px solid var(--line)}
-.logos{
-    list-style:none; margin:0; padding:0;
-    display:grid; gap:16px; grid-template-columns:repeat(2, 1fr); align-items:center; justify-items:center
-}
+.logos{list-style:none; margin:0; padding:0; display:grid; gap:16px; grid-template-columns:repeat(2, 1fr); align-items:center; justify-items:center}
 @media(min-width:840px){ .logos{grid-template-columns:repeat(3, 1fr)} }
-.logos img{
-    max-width:150px; width:100%; height:auto; filter:grayscale(100%) brightness(120%); opacity:.9;
-    transition:filter .2s ease, transform .2s ease, opacity .2s ease;
-}
-.logos img:hover{
-    filter:grayscale(0%) drop-shadow(0 8px 18px rgba(124,77,255,.35)) drop-shadow(0 4px 10px rgba(36,195,255,.25));
-    transform:translateY(-2px); opacity:1;
-}
+.logos img{max-width:150px; width:100%; height:auto; filter:grayscale(100%) brightness(120%); opacity:.9; transition:filter .2s ease, transform .2s ease, opacity .2s ease}
+.logos img:hover{filter:grayscale(0%) drop-shadow(0 8px 18px rgba(124,77,255,.35)) drop-shadow(0 4px 10px rgba(36,195,255,.25)); transform:translateY(-2px); opacity:1}
 
 /* Contact */
 .contact{display:grid; grid-template-columns:1fr; gap:16px}
 @media(min-width:980px){ .contact{grid-template-columns:1.1fr .9fr; align-items:start} }
-.panel{
-    border:1px solid #2a3360; border-radius:16px; padding:18px;
-    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
-    box-shadow:var(--shadowS)
-}
+.panel{border:1px solid #2a3360; border-radius:16px; padding:18px; background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); box-shadow:var(--shadowS)}
 .panel em{color:var(--neon); font-style:normal}
 .channels{list-style:none; display:grid; gap:8px; padding:0; margin:14px 0 0}
 .channels a{color:#bde3ff; text-decoration:none}
 
-.form{
-    display:grid; gap:12px; padding:18px; border-radius:16px;
-    border:1px solid #2a3360; background:rgba(8,12,28,.85); box-shadow:var(--shadowS)
-}
+.form{display:grid; gap:12px; padding:18px; border-radius:16px; border:1px solid #2a3360; background:rgba(8,12,28,.85); box-shadow:var(--shadowS)}
 .form label{display:grid; gap:6px}
-.form input,.form textarea{
-    background:#0a1026; border:1px solid #263066; color:#eaf2ff; border-radius:12px; padding:12px; font:inherit
-}
+.form input,.form textarea{background:#0a1026; border:1px solid #263066; color:#eaf2ff; border-radius:12px; padding:12px; font:inherit}
 .form .full{grid-column:1/-1}
 .note{color:#9fb2d9; font-size:13px; margin:0}
-.toast{
-    display:none; padding:10px 12px; border-radius:10px;
-    background:rgba(42,245,193,.12); color:#c9ffee; border:1px solid rgba(42,245,193,.35)
-}
+.toast{display:none; padding:10px 12px; border-radius:10px; background:rgba(42,245,193,.12); color:#c9ffee; border:1px solid rgba(42,245,193,.35)}
 
 /* Footer + FAB */
 .ftr{border-top:1px solid var(--line); padding:22px 0 32px}
@@ -301,9 +284,29 @@ body{
 /* RTL tweaks */
 html[dir="rtl"] .contact{direction:rtl}
 html[dir="rtl"] .tile ul, html[dir="rtl"] .slide p{padding-right:18px; padding-left:0}
-/* инвертируем стрелки только визуально — логика уже учтена в JS */
-html[dir="rtl"] .sbtn.prev{right:-6px; left:auto}
-html[dir="rtl"] .sbtn.next{left:-6px; right:auto}
+html[dir="rtl"] .sdots{direction:ltr}      /* чтобы точки считались слева-направо */
+html[dir="rtl"] .sbtn.prev{right:6px; left:auto}
+html[dir="rtl"] .sbtn.next{left:6px; right:auto}
+
+/* Responsive polish for mobile */
+@media (max-width:900px){
+    .hero__wrap{grid-template-columns:1fr; gap:22px}
+}
+@media (max-width:700px){
+    .section{padding:60px 0}
+    .glow{font-size:clamp(28px,8vw,42px)}
+    .lead{font-size:15px}
+    /* HERO: кнопки колонкой на всю ширину */
+    .cta{flex-direction:column}
+    .cta .btn{width:100%; justify-content:center; padding:12px 16px}
+    /* WORK: чуть уже карточки на телефоне */
+    .slide{flex-basis:86%; max-width:86%}
+    .sbtn{width:42px; height:42px}
+}
+@media (max-width:460px){
+    .slide{flex-basis:90%; max-width:90%}
+    .title{font-size:clamp(18px,5.2vw,26px)}
+}
 
 /* motion reduce */
 @media (prefers-reduced-motion: reduce){

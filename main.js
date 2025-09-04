@@ -7,20 +7,20 @@ function starfield(){
     const c = document.getElementById('stars');
     if(!c) return;
     const x = c.getContext('2d');
-    let W = innerWidth, H = innerHeight;
+    let W = innerWidth, H = innerHeight, DPR = devicePixelRatio || 1;
+
     function resize(){
-        W = innerWidth; H = innerHeight;
-        const DPR = devicePixelRatio || 1;
+        W = innerWidth; H = innerHeight; DPR = devicePixelRatio || 1;
         c.width = W * DPR; c.height = H * DPR;
         x.setTransform(DPR,0,0,DPR,0,0);
     }
     resize();
     addEventListener('resize', resize, {passive:true});
 
-    const stars = Array.from({length: 140}, () => ({
+    const stars = Array.from({length: 160}, () => ({
         x: Math.random() * W,
         y: Math.random() * H,
-        z: 0.2 + Math.random() * 0.9,
+        z: 0.25 + Math.random() * 0.9,
         s: 0.6 + Math.random() * 1.8
     }));
 
@@ -68,35 +68,33 @@ const locales = {
         s2_title:"Разработка сайтов", s2_text:"Современные, быстрые и адаптивные сайты под цели бизнеса.",
         s2_li1:"Чистый код и надёжный стек", s2_li2:"CMS или статический сайт", s2_li3:"Доступность по стандартам",
         s3_title:"Цифровой брендинг", s3_text:"Ясная айдентика, понятный UX и аккуратный UI.",
-        // ↓↓↓ ДОБАВЬ ЭТИ СТРОКИ ↓↓↓
         s3_li1:"Голос бренда и визуальные элементы",
         s3_li2:"Design system и UI-kit",
         s3_li3:"Лендинги с высокой конверсией",
-        // ↑↑↑
         work_title:"НАШИ РАБОТЫ — ВАШ УСПЕХ",
         w1_t:"Лендинг и магазин для логистики", w1_p:"Быстрее загрузка, выше конверсия, удобный мобильный UX.",
         w2_t:"Каталог услуг подрядчиков", w2_p:"Понятная навигация и рост SEO в нише.",
         w3_t:"Медицинский сайт с записью", w3_p:"Рефреш бренда, структура контента и запись на приём.",
         team_title:"КОМАНДА",
         partners_title:"ПАРТНЁРЫ",
-        contact_title_1:"Готовы", contact_title_2:"расти", contact_sub:"Оставьте контакты — свяжемся скоро.",
+        contact_title_1:"Готовы", contact_title_2:"расти", contact_sub:"Оставьте контакты, свяжемся скоро.",
         f_name:"Имя и фамилия", f_phone:"Телефон", f_email:"Email", f_msg:"Сообщение",
         ph_name:"Имя и фамилия", ph_phone:"+972", ph_email:"you@example.com", ph_msg:"Опишите задачу",
-        f_send:"Отправить", f_note:"Отправляя форму, вы соглашаетесь с политикой конфиденциальности.", toast_ok:"Спасибо! Мы скоро свяжемся.",
+        f_send:"Отправить", f_note:"Отправляя форму, вы соглашаетесь с политикой конфиденциальности.", toast_ok:"Спасибо. Мы скоро свяжемся.",
         privacy:"Политика конфиденциальности", terms:"Условия"},
     he:{nav_services:"שירותים",nav_work:"פרויקטים",nav_team:"צוות",nav_partners:"שותפים",nav_contact:"צור קשר",
-        hero_title:"השותף שלכם לצמיחה דיגיטלית",hero_sub:"פיתוח אתרים ואופטימיזציית SEO",
+        hero_title:"השותף שלכם לצמיחה דיגיטלית",hero_sub:"פיתוח אתרים ואופטימציית SEO",
         cta_audit:"קבלו ייעוץ חינם",cta_work:"לראות פרויקטים",
-        hero_badge_1:"טעינה מהירה",hero_badge_2:"מוכן ל-SEO",hero_badge_3:"נייד תחילה",
+        hero_badge_1:"טעינה מהירה",hero_badge_2:"מוכן ל SEO",hero_badge_3:"נייד תחילה",
         services_title:"השירותים שלנו",
-        s1_title:"אופטימיזציית SEO",s1_text:"נראות גבוהה בגוגל בעזרת SEO טכני, מחקר מלים וקישורים איכותיים.",
-        s1_li1:"מהירות ו-Core Web Vitals",s1_li2:"מבנה ותוכן",s1_li3:"בניית קישורים מבוקרת",
+        s1_title:"אופטימציית SEO",s1_text:"נראות גבוהה בגוגל בעזרת SEO טכני, מחקר מלים וקישורים איכותיים.",
+        s1_li1:"מהירות ו Core Web Vitals",s1_li2:"מבנה ותוכן",s1_li3:"בניית קישורים מבוקרת",
         s2_title:"פיתוח אתרים",s2_text:"אתרים מודרניים ומהירים לפי מטרות העסק.",
         s2_li1:"קוד נקי וסטאק אמין",s2_li2:"CMS או סטטי לפי צורך",s2_li3:"נגישות כחלק מהעיצוב",
-        s3_title:"מיתוג דיגיטלי",s3_text:"זהות ברורה, UX נוח ו-UI מלוטש.",
-        s3_li1:"שפת מותג ונכסים חזותיים",     // ← добавлено
-        s3_li2:"Design system ו-UI kit",       // ← добавлено
-        s3_li3:"דפי נחיתה שממירים",           // ← добавлено
+        s3_title:"מיתוג דיגיטלי",s3_text:"זהות ברורה, UX נוח ו UI מלוטש.",
+        s3_li1:"שפת מותג ונכסים חזותיים",
+        s3_li2:"Design system ו UI kit",
+        s3_li3:"דפי נחיתה שממירים",
         work_title:"העבודות שלנו וההצלחה שלכם",
         w1_t:"דף נחיתה וחנות לוגיסטיקה",w1_p:"טעינה מהירה יותר, המרות גבוהות יותר וחוויית מובייל טובה.",
         w2_t:"קטלוג שירותי קבלנים",w2_p:"ניווט ברור וצמיחה אורגנית.",
@@ -136,19 +134,17 @@ function buildTicker(){
     const inner = $('#tickerInner');
     if(!inner) return;
 
-    // base unit
     const unit = phrases.map(p=>`<span>${p}</span>`).join('');
     inner.innerHTML = unit;
-    const vw = inner.parentElement.clientWidth;
 
-    // fill long enough
+    const vw = inner.parentElement.clientWidth;
     while(inner.scrollWidth < vw * 2.5){
-        inner.innerHTML += unit;
+        inner.insertAdjacentHTML('beforeend', unit);
     }
-    inner.innerHTML += inner.innerHTML; // double to remove seam
+    inner.insertAdjacentHTML('beforeend', inner.innerHTML);
 }
 
-/* ================== Slider: infinite + rtl + gap-aware ================== */
+/* ================== Slider (scroll-snap, RTL-safe) ================== */
 function slider(root){
     if(!root) return;
     const viewport = root.querySelector('.viewport');
@@ -157,132 +153,56 @@ function slider(root){
     const next = root.querySelector('.sbtn.next');
     const dotsWrap = $('#sdots');
 
-    const isRTL = document.documentElement.dir === 'rtl';
-    let slides = [...track.children];
-    let index = 0, perView = 1, slideW = 0, step = 0, autoTimer, rto;
+    // Нормализуем сам скролл: контейнер всегда LTR (чтобы RTL не ломал направления),
+    // тексты внутри карточек остаются в нужном dir всего документа.
+    viewport.setAttribute('dir', 'ltr');
+    track.setAttribute('dir', 'ltr');
 
-    const pagesCount = () => Math.ceil(slides.length / perView);
+    let step = 0, perView = 1, rto;
 
-    function calc(){
-        const w = viewport.clientWidth;
-        perView = w >= 1200 ? 3 : w >= 900 ? 2 : 1;
-        slideW = w / perView;
+    function compute(){
+        const slide = track.querySelector('.slide');
+        if(!slide) return;
 
-        // read gap from CSS
+        const rect = slide.getBoundingClientRect();
         const cs = getComputedStyle(track);
         const gap = parseFloat(cs.columnGap || cs.gap || '0') || 0;
-        step = slideW + gap;
+        step = rect.width + gap;
 
-        track.style.transition = 'none';
+        const w = viewport.clientWidth;
+        perView = w >= 1200 ? 3 : w >= 900 ? 2 : 1;
 
-        // rebuild with clones
-        const orig = slides.map(el => el);
-        track.innerHTML = '';
-        orig.forEach(el => el.style.width = `${slideW}px`);
-
-        const clonesBefore = orig.slice(-perView).map(el => { const n=el.cloneNode(true); n.style.width=`${slideW}px`; return n; });
-        const clonesAfter  = orig.slice(0, perView).map(el => { const n=el.cloneNode(true); n.style.width=`${slideW}px`; return n; });
-        clonesBefore.forEach(el => track.appendChild(el));
-        orig.forEach(el => track.appendChild(el));
-        clonesAfter.forEach(el => track.appendChild(el));
-
-        slides = orig;
-        index = perView;
-        track.style.transform = `translateX(${-index*step}px)`;
-        requestAnimationFrame(()=> track.style.transition = 'transform .45s ease');
-
-        // dots
-        dotsWrap.innerHTML = '';
-        for(let i=0;i<pagesCount();i++){
-            const b = document.createElement('button');
-            if(i===0) b.classList.add('active');
-            b.addEventListener('click', ()=> goTo(i*perView + perView));
-            dotsWrap.appendChild(b);
+        // точки
+        if(dotsWrap){
+            const pages = Math.max(1, Math.ceil(track.children.length / perView));
+            dotsWrap.innerHTML = '';
+            for(let i=0;i<pages;i++){
+                const b = document.createElement('button');
+                if(i===0) b.classList.add('active');
+                b.addEventListener('click', ()=> viewport.scrollTo({left: i*step*perView, behavior:'smooth'}));
+                dotsWrap.appendChild(b);
+            }
         }
     }
-
-    const normalizeDot = (val, mod) => ((val % mod) + mod) % mod;
 
     function updateDots(){
-        const pages = pagesCount();
-        const raw = Math.floor((index - perView) / perView);
-        const logical = normalizeDot(raw, pages);
-        $$('#sdots button').forEach((b,k)=>b.classList.toggle('active', k===logical));
+        if(!dotsWrap || step===0) return;
+        const idx = Math.round(viewport.scrollLeft / (step*perView));
+        const btns = [...dotsWrap.querySelectorAll('button')];
+        btns.forEach((b,i)=> b.classList.toggle('active', i===idx));
     }
 
-    function goTo(to){
-        index = to;
-        track.style.transform = `translateX(${-index*step}px)`;
-        updateDots();
-    }
+    next?.addEventListener('click', ()=> viewport.scrollBy({left: step*perView, behavior:'smooth'}));
+    prev?.addEventListener('click', ()=> viewport.scrollBy({left: -step*perView, behavior:'smooth'}));
+    viewport.addEventListener('scroll', ()=> requestAnimationFrame(updateDots));
 
-    const stepNext = () => goTo(index + perView);
-    const stepPrev = () => goTo(index - perView);
-
-    track.addEventListener('transitionend', ()=>{
-        if(index >= slides.length + perView){
-            track.style.transition='none';
-            index = perView;
-            track.style.transform = `translateX(${-index*step}px)`;
-            requestAnimationFrame(()=> track.style.transition='transform .45s ease');
-        }
-        if(index < perView){
-            track.style.transition='none';
-            index = slides.length + perView - perView;
-            track.style.transform = `translateX(${-index*step}px)`;
-            requestAnimationFrame(()=> track.style.transition='transform .45s ease');
-        }
-    });
-
-    // swipe
-    let startX = 0, dx = 0, dragging = false, pid=null;
-    viewport.addEventListener('pointerdown', e=>{
-        dragging=true; startX=e.clientX; dx=0;
-        track.style.transition='none';
-        pid = e.pointerId;
-        viewport.setPointerCapture(pid);
-    });
-    viewport.addEventListener('pointermove', e=>{
-        if(!dragging) return;
-        dx = e.clientX - startX;
-        track.style.transform = `translateX(${-(index*step - dx)}px)`;
-    });
-    function endSwipe(){
-        if(!dragging) return;
-        dragging=false;
-        track.style.transition='transform .45s ease';
-        const threshold = step * 0.2;
-        const goPrev = isRTL ? dx < -threshold : dx > threshold;
-        const goNext = isRTL ? dx > threshold : dx < -threshold;
-        if(goPrev) stepPrev();
-        else if(goNext) stepNext();
-        else goTo(index);
-        dx = 0;
-        if(pid!==null) { try{ viewport.releasePointerCapture(pid); }catch{} pid=null; }
-    }
-    viewport.addEventListener('pointerup', endSwipe);
-    viewport.addEventListener('pointercancel', endSwipe);
-    viewport.addEventListener('pointerleave', endSwipe);
-
-    // autoplay
-    function startAuto(){ stopAuto(); autoTimer = setInterval(isRTL ? stepPrev : stepNext, 4500); }
-    function stopAuto(){ if(autoTimer) clearInterval(autoTimer); }
-    viewport.addEventListener('mouseenter', stopAuto);
-    viewport.addEventListener('mouseleave', startAuto);
-    document.addEventListener('visibilitychange', ()=> document.hidden ? stopAuto() : startAuto());
-
-    // arrows (RTL-aware)
-    next.addEventListener('click', isRTL ? stepPrev : stepNext);
-    prev.addEventListener('click', isRTL ? stepNext : stepPrev);
-
-    // resize debounce
     addEventListener('resize', ()=>{
         clearTimeout(rto);
-        rto = setTimeout(calc, 120);
+        rto = setTimeout(()=>{ compute(); updateDots(); }, 120);
     }, {passive:true});
 
-    calc();
-    startAuto();
+    compute();
+    updateDots();
 }
 
 /* ================== interactions ================== */
@@ -301,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // starfield
+    // bg
     starfield();
 
     // i18n
