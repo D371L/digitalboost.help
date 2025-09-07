@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -187,6 +187,9 @@
         <form id="form" class="form" novalidate>
             <label><span data-i18n="f_name">Full name</span>
                 <input name="name" required data-i18n-placeholder="ph_name" placeholder="Full name" autocomplete="name">
+            </label>
+            <label>
+                <input type="text" name="honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
             </label>
             <label><span data-i18n="f_phone">Phone</span>
                 <input name="phone" type="tel" required data-i18n-placeholder="ph_phone" placeholder="+972" autocomplete="tel" inputmode="tel">

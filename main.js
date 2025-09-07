@@ -6,7 +6,6 @@ function starfield(){
     if(!c) return;
     const x = c.getContext('2d');
     let W = innerWidth, H = innerHeight, DPR = devicePixelRatio || 1;
-
     function resize(){
         W = innerWidth; H = innerHeight; DPR = devicePixelRatio || 1;
         c.width = W * DPR; c.height = H * DPR;
@@ -14,14 +13,12 @@ function starfield(){
     }
     resize();
     addEventListener('resize', resize, {passive:true});
-
     const stars = Array.from({length:160}, () => ({
         x: Math.random() * W,
         y: Math.random() * H,
         z: 0.25 + Math.random() * 0.9,
         s: 0.6 + Math.random() * 1.8
     }));
-
     (function tick(){
         x.clearRect(0,0,W,H);
         for(const st of stars){
@@ -182,9 +179,7 @@ function slider(root){
     const dotsWrap = $('#sdots');
     viewport.setAttribute('dir', 'ltr');
     track.setAttribute('dir', 'ltr');
-
     let step = 0, perView = 1, rto;
-
     function compute(){
         const slide = track.querySelector('.slide');
         if(!slide) return;
@@ -194,7 +189,6 @@ function slider(root){
         step = rect.width + gap;
         const w = viewport.clientWidth;
         perView = w >= 1200 ? 3 : w >= 900 ? 2 : 1;
-
         if(dotsWrap){
             const pages = Math.max(1, Math.ceil(track.children.length / perView));
             dotsWrap.innerHTML = '';
@@ -206,23 +200,19 @@ function slider(root){
             }
         }
     }
-
     function updateDots(){
         if(!dotsWrap || step===0) return;
         const idx = Math.round(viewport.scrollLeft / (step*perView));
         const btns = [...dotsWrap.querySelectorAll('button')];
         btns.forEach((b,i)=> b.classList.toggle('active', i===idx));
     }
-
     next?.addEventListener('click', ()=> viewport.scrollBy({left: step*perView, behavior:'smooth'}));
     prev?.addEventListener('click', ()=> viewport.scrollBy({left: -step*perView, behavior:'smooth'}));
     viewport.addEventListener('scroll', ()=> requestAnimationFrame(updateDots));
-
     addEventListener('resize', ()=>{
         clearTimeout(rto);
         rto = setTimeout(()=>{ compute(); updateDots(); }, 120);
     }, {passive:true});
-
     compute();
     updateDots();
 }
@@ -254,22 +244,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const form = $('#form'), toast = $('#toast');
     if(form && toast){
+        const ENDPOINT = 'https://sender.digitalboost.help/';
+        const btn = form.querySelector('button[type="submit"]');
         const tel = form.querySelector('input[type="tel"]');
         const email = form.querySelector('input[type="email"]');
         if(tel){ tel.setAttribute('pattern', '^[+0-9\\s()-]{6,}$'); tel.setAttribute('inputmode', 'tel'); }
         if(email) email.setAttribute('inputmode', 'email');
 
-        form.addEventListener('submit', e=>{
+        form.addEventListener('submit', async e=>{
             e.preventDefault();
-            if(!form.checkValidity()){
-                form.reportValidity();
-                return;
-            }
+            if(!form.checkValidity()){ form.reportValidity(); return; }
             const data = Object.fromEntries(new FormData(form).entries());
-            toast.textContent = t('toast_ok');
-            toast.style.display='block';
-            form.reset();
-            setTimeout(()=>toast.style.display='none', 3500);
+            try{
+                btn && (btn.disabled = true);
+                const res = await fetch(ENDPOINT, {
+                    method:'POST',
+                    headers:{'Content-Type':'application/json'},
+                    body: JSON.stringify(data),
+                    mode:'cors',
+                    credentials:'omit',
+                    cache:'no-store'
+                });
+                const ok = res.ok;
+                toast.textContent = ok ? t('toast_ok') : 'Send failed. Try again.';
+                toast.style.display='block';
+                if(ok) form.reset();
+            }catch{
+                toast.textContent = 'Network error. Try again.';
+                toast.style.display='block';
+            }finally{
+                btn && (btn.disabled = false);
+                setTimeout(()=>toast.style.display='none', 4000);
+            }
         });
     }
 });
