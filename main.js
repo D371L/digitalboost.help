@@ -246,29 +246,59 @@ document.addEventListener('DOMContentLoaded', () => {
     if(form && toast){
         const ENDPOINT = 'https://sender.digitalboost.help/';
         const btn = form.querySelector('button[type="submit"]');
-        const tel = form.querySelector('input[type="tel"]');
-        const email = form.querySelector('input[type="email"]');
+        const tel = form.querySelector('input[name="phone"]');
+        const email = form.querySelector('input[name="email"]');
+        const nameI = form.querySelector('input[name="name"]');
+        const msgT = form.querySelector('textarea[name="message"]');
         if(tel){ tel.setAttribute('pattern', '^[+0-9\\s()-]{6,}$'); tel.setAttribute('inputmode', 'tel'); }
         if(email) email.setAttribute('inputmode', 'email');
+
+        const MAX = { name:80, phone:32, email:120, message:1000 };
+        function norm(v){ return (v||'').toString().trim().replace(/\s{2,}/g,' '); }
+        function clamp(el, n){ if(el && el.value.length>n) el.value = el.value.slice(0,n); }
+
+        const counterEl = $('[data-counter-for="msg"]');
+        function updateCounter(){
+            if(!msgT || !counterEl) return;
+            const n = msgT.value.length;
+            counterEl.textContent = `${n}/${MAX.message}`;
+            counterEl.classList.toggle('over', n>MAX.message);
+        }
+        msgT?.addEventListener('input', ()=>{ clamp(msgT, MAX.message); updateCounter(); });
+        updateCounter();
+
+        form.addEventListener('input', e=>{
+            if(e.target===nameI) clamp(nameI, MAX.name);
+            if(e.target===tel) clamp(tel, MAX.phone);
+            if(e.target===email) clamp(email, MAX.email);
+        });
 
         form.addEventListener('submit', async e=>{
             e.preventDefault();
             if(!form.checkValidity()){ form.reportValidity(); return; }
-            const data = Object.fromEntries(new FormData(form).entries());
+            if(msgT && msgT.value.length>MAX.message) return;
+
+            const raw = Object.fromEntries(new FormData(form).entries());
+            const data = {
+                name: norm(raw.name).slice(0,MAX.name),
+                phone: norm(raw.phone).slice(0,MAX.phone),
+                email: norm(raw.email).slice(0,MAX.email),
+                message: (raw.message||'').toString().slice(0,MAX.message),
+                honey: raw.honey || ''
+            };
+
             try{
                 btn && (btn.disabled = true);
                 const res = await fetch(ENDPOINT, {
                     method:'POST',
                     headers:{'Content-Type':'application/json'},
                     body: JSON.stringify(data),
-                    mode:'cors',
-                    credentials:'omit',
-                    cache:'no-store'
+                    mode:'cors', credentials:'omit', cache:'no-store'
                 });
                 const ok = res.ok;
                 toast.textContent = ok ? t('toast_ok') : 'Send failed. Try again.';
                 toast.style.display='block';
-                if(ok) form.reset();
+                if(ok){ form.reset(); updateCounter(); }
             }catch{
                 toast.textContent = 'Network error. Try again.';
                 toast.style.display='block';

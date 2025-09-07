@@ -186,19 +186,17 @@
         </div>
         <form id="form" class="form" novalidate>
             <label><span data-i18n="f_name">Full name</span>
-                <input name="name" required data-i18n-placeholder="ph_name" placeholder="Full name" autocomplete="name">
-            </label>
-            <label>
-                <input type="text" name="honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;opacity:0">
+                <input name="name" required maxlength="80" data-i18n-placeholder="ph_name" placeholder="Full name" autocomplete="name">
             </label>
             <label><span data-i18n="f_phone">Phone</span>
-                <input name="phone" type="tel" required data-i18n-placeholder="ph_phone" placeholder="+972" autocomplete="tel" inputmode="tel">
+                <input name="phone" type="tel" required maxlength="32" data-i18n-placeholder="ph_phone" placeholder="+972" autocomplete="tel" inputmode="tel">
             </label>
             <label><span data-i18n="f_email">Email</span>
-                <input name="email" type="email" required data-i18n-placeholder="ph_email" placeholder="you@example.com" autocomplete="email" inputmode="email">
+                <input name="email" type="email" required maxlength="120" data-i18n-placeholder="ph_email" placeholder="you@example.com" autocomplete="email" inputmode="email">
             </label>
             <label class="full"><span data-i18n="f_msg">Message</span>
-                <textarea name="message" rows="4" data-i18n-placeholder="ph_msg" placeholder="Tell us about your project"></textarea>
+                <textarea name="message" rows="4" data-i18n-placeholder="ph_msg" placeholder="Tell us about your project" maxlength="1000" data-counter="msg"></textarea>
+                <span class="counter" data-counter-for="msg">0/1000</span>
             </label>
             <button class="btn primary full" data-i18n="f_send" type="submit">Send</button>
             <p class="note" data-i18n="f_note">By sending you agree to our privacy policy.</p>

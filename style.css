@@ -300,3 +300,6 @@ html, body{max-width:100%; overflow-x:clip}
     .lang .lbtn{padding:3px 7px; font-size:11px;}
     .brand__word{letter-spacing:.04em;}
 }
+
+.counter{display:block;margin-top:6px;font-size:12px;color:#9fb2d9;text-align:right;opacity:.9}
+.counter.over{color:#ffb3b3}
