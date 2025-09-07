@@ -2,36 +2,35 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Digital Boost • Futuristic Web & SEO</title>
-    <meta name="description" content="Digital Boost builds lightning-fast futuristic websites and drives growth with sharp SEO. Explore services, work, team, and partners." />
-
-    <link rel="icon" type="image" href="assets/favicon.png"/>
-
-    <!-- Social -->
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Digital Boost • Futuristic Web & SEO" />
-    <meta property="og:description" content="Web development, SEO, and digital branding with a futuristic edge." />
-    <meta property="og:image" content="assets/logo.png" />
-    <meta property="og:url" content="https://digitalboost.help/" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
+    <meta name="description" content="Digital Boost builds lightning fast futuristic websites and drives growth with sharp SEO. Explore services, work, team, and partners.">
+    <meta name="robots" content="index,follow">
+    <link rel="icon" type="image/png" href="assets/favicon.png" sizes="32x32">
+    <link rel="apple-touch-icon" href="assets/favicon.png">
+    <link rel="canonical" href="https://digitalboost.help/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Digital Boost • Futuristic Web & SEO">
+    <meta property="og:description" content="Web development, SEO, and digital branding with a futuristic edge.">
+    <meta property="og:image" content="https://digitalboost.help/assets/logo.png">
+    <meta property="og:url" content="https://digitalboost.help/">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;600;800&family=Inter:wght@400;600;800&family=Orbitron:wght@600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
+    <script defer src="main.js"></script>
 </head>
 <body>
-<!-- background layers -->
 <canvas id="stars" aria-hidden="true"></canvas>
 <div class="grid-overlay" aria-hidden="true"></div>
 <div class="beams" aria-hidden="true"></div>
 
-<!-- Header -->
 <header class="hdr">
     <div class="container hdr__row">
         <a class="brand" href="#" aria-label="Digital Boost">
             <span class="brand__logo">◉</span>
             <span class="brand__word">DIGITAL<span>BOOST</span></span>
         </a>
-
         <nav class="nav">
             <a href="#services" data-i18n="nav_services">SERVICES</a>
             <a href="#work" data-i18n="nav_work">WORK</a>
@@ -39,14 +38,13 @@
             <a href="#partners" data-i18n="nav_partners">PARTNERS</a>
             <a href="#contact" data-i18n="nav_contact">CONTACT</a>
         </nav>
-
         <div class="hdr__tools">
             <div class="lang">
-                <button class="lbtn" data-lang="en">EN</button>
-                <button class="lbtn" data-lang="ru">RU</button>
-                <button class="lbtn" data-lang="he">HE</button>
+                <button class="lbtn" data-lang="en" aria-pressed="false">EN</button>
+                <button class="lbtn" data-lang="ru" aria-pressed="false">RU</button>
+                <button class="lbtn" data-lang="he" aria-pressed="false">HE</button>
             </div>
-            <a class="btn ghost" target="_blank" rel="noopener" href="https://wa.me/972586776062">WhatsApp</a>
+            <a class="btn ghost" target="_blank" rel="noopener noreferrer" href="https://wa.me/972586776062">WhatsApp</a>
             <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
         </div>
     </div>
@@ -59,7 +57,6 @@
     </div>
 </header>
 
-<!-- Hero -->
 <section class="hero">
     <div class="hero__vignette" aria-hidden="true"></div>
     <div class="container hero__wrap">
@@ -76,8 +73,6 @@
                 <li data-i18n="hero_badge_3">Mobile first</li>
             </ul>
         </div>
-
-        <!-- Futuristic Gyroscope visual -->
         <div class="gyro" aria-hidden="true">
             <span class="ring r1"></span>
             <span class="ring r2"></span>
@@ -85,14 +80,11 @@
             <span class="core"></span>
         </div>
     </div>
-
-    <!-- Perfectly looping ticker -->
     <div class="ticker" id="ticker">
         <div class="ticker__inner" id="tickerInner" aria-hidden="true"></div>
     </div>
 </section>
 
-<!-- Services -->
 <section id="services" class="section">
     <div class="container">
         <h2 class="title" data-i18n="services_title">OUR SERVICES</h2>
@@ -106,7 +98,6 @@
                     <li data-i18n="s1_li3">Backlinks with quality control</li>
                 </ul>
             </article>
-
             <article class="tile">
                 <header><span>02</span><h3 data-i18n="s2_title">Web Development</h3></header>
                 <p data-i18n="s2_text">Modern, responsive, high-performing websites tailored to your goals.</p>
@@ -116,7 +107,6 @@
                     <li data-i18n="s2_li3">Accessibility built in</li>
                 </ul>
             </article>
-
             <article class="tile">
                 <header><span>03</span><h3 data-i18n="s3_title">Digital Branding</h3></header>
                 <p data-i18n="s3_text">Clear identity, intuitive UX, sleek UI that convert.</p>
@@ -130,16 +120,13 @@
     </div>
 </section>
 
-<!-- WORK: Infinite slider -->
 <section id="work" class="section alt">
     <div class="container">
         <h2 class="title" data-i18n="work_title">OUR WORK – YOUR SUCCESS</h2>
-
         <div class="slider" id="workSlider" aria-label="Portfolio">
             <button class="sbtn prev" aria-label="Previous">‹</button>
             <div class="viewport">
                 <div class="track">
-                    <!-- 7 base slides -->
                     <article class="slide"><div class="frame"><img src="assets/work/1.png" alt=""></div></article>
                     <article class="slide"><div class="frame"><img src="assets/work/2.png" alt=""></div></article>
                     <article class="slide"><div class="frame"><img src="assets/work/3.png" alt=""></div></article>
@@ -155,7 +142,6 @@
     </div>
 </section>
 
-<!-- TEAM -->
 <section id="team" class="section">
     <div class="container">
         <h2 class="title" data-i18n="team_title">OUR TEAM</h2>
@@ -176,7 +162,6 @@
     </div>
 </section>
 
-<!-- PARTNERS -->
 <section id="partners" class="section partners">
     <div class="container">
         <h2 class="title" data-i18n="partners_title">PARTNERS</h2>
@@ -188,24 +173,30 @@
     </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact" class="section alt">
     <div class="container contact">
         <div class="panel">
             <h2 class="title"><span data-i18n="contact_title_1">Ready to</span> <em data-i18n="contact_title_2">level up</em>?</h2>
             <p class="lead" data-i18n="contact_sub">Leave your info and we’ll contact you soon.</p>
             <ul class="channels">
-                <li><a target="_blank" rel="noopener" href="https://wa.me/972586776062">WhatsApp</a></li>
-                <li><a target="_blank" rel="noopener" href="https://t.me/digitalboost_help">Telegram</a></li>
-                <li><a target="_blank" rel="noopener" href="https://www.instagram.com/matan.dinin/">Instagram</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://wa.me/972586776062">WhatsApp</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://t.me/digitalboost_help">Telegram</a></li>
+                <li><a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/matan.dinin/">Instagram</a></li>
             </ul>
         </div>
-
         <form id="form" class="form" novalidate>
-            <label><span data-i18n="f_name">Full name</span><input name="name" required data-i18n-placeholder="ph_name" placeholder="Full name"></label>
-            <label><span data-i18n="f_phone">Phone</span><input name="phone" type="tel" required data-i18n-placeholder="ph_phone" placeholder="+972"></label>
-            <label><span data-i18n="f_email">Email</span><input name="email" type="email" required data-i18n-placeholder="ph_email" placeholder="you@example.com"></label>
-            <label class="full"><span data-i18n="f_msg">Message</span><textarea name="message" rows="4" data-i18n-placeholder="ph_msg" placeholder="Tell us about your project"></textarea></label>
+            <label><span data-i18n="f_name">Full name</span>
+                <input name="name" required data-i18n-placeholder="ph_name" placeholder="Full name" autocomplete="name">
+            </label>
+            <label><span data-i18n="f_phone">Phone</span>
+                <input name="phone" type="tel" required data-i18n-placeholder="ph_phone" placeholder="+972" autocomplete="tel" inputmode="tel">
+            </label>
+            <label><span data-i18n="f_email">Email</span>
+                <input name="email" type="email" required data-i18n-placeholder="ph_email" placeholder="you@example.com" autocomplete="email" inputmode="email">
+            </label>
+            <label class="full"><span data-i18n="f_msg">Message</span>
+                <textarea name="message" rows="4" data-i18n-placeholder="ph_msg" placeholder="Tell us about your project"></textarea>
+            </label>
             <button class="btn primary full" data-i18n="f_send" type="submit">Send</button>
             <p class="note" data-i18n="f_note">By sending you agree to our privacy policy.</p>
             <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -220,8 +211,6 @@
     </div>
 </footer>
 
-<a class="fab" target="_blank" rel="noopener" href="https://wa.me/972586776062" aria-label="WhatsApp">✦</a>
-
-<script src="main.js"></script>
+<a class="fab" target="_blank" rel="noopener noreferrer" href="https://wa.me/972586776062" aria-label="WhatsApp">✦</a>
 </body>
 </html>
